@@ -20,7 +20,7 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
  * Text UI of the application.
  */
 
-public class Formatter{
+public class Formatter extends TextUI{
 	
     /** Offset required to convert between 1-indexing and 0-indexing.  */
     public static final int DISPLAYED_INDEX_OFFSET = 1;
@@ -30,9 +30,6 @@ public class Formatter{
 
     /** A platform independent line separator. */
     private static final String LS = System.lineSeparator();
-
-    private static final String DIVIDER = "===================================================";
-
 /** Format of indexed list item */
     private static final String MESSAGE_INDEXED_LIST_ITEM = "\t%1$d. %2$s";
 
@@ -77,7 +74,10 @@ public class Formatter{
 }
 
 public class TextUi {
-    private final Scanner in;
+ 
+    private static final String DIVIDER = "===================================================";
+
+   private final Scanner in;
     private final PrintStream out;
 
     public TextUi() {
