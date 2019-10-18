@@ -6,18 +6,16 @@ import seedu.addressbook.data.exception.IllegalValueException;
  * Represents a Person's address in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidAddress(String)}
  */
-public class Address {
+public class Address extends Contact implements Printable{
 
     public static final String EXAMPLE = "123, some street";
     public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses can be in any format";
     public static final String ADDRESS_VALIDATION_REGEX = ".+";
 
-    private final String value;
     private Block block=new Block();
     private Street street=new Street();
     private Unit unit=new Unit();
     private PostalCode postalCode=new PostalCode();
-    private boolean isPrivate;
 
     /**
      * Validates given address.
@@ -62,32 +60,13 @@ public class Address {
 
     @Override
     public String toString() {
-        System.err.println("Value de conexion "+block.getBlock()+" "+street.getStreet()+" "+unit.getUnit()+" "+postalCode.getPostalCode());
-        System.err.println("Value de conexion2 "+this.value);
-        String valuetmp="";
-
-        if(block.getBlock()!="")
-            if(valuetmp!="")
-                valuetmp=valuetmp+","+block.getBlock();
-            else
-                valuetmp=block.getBlock();
+        String valuetmp=block.getBlock();
         if(street.getStreet()!="")
-            if(valuetmp!="")
-                valuetmp=valuetmp+","+street.getStreet();
-            else
-                valuetmp=street.getStreet();
-
+            valuetmp+=(valuetmp=="")?street.getStreet():(","+street.getStreet());
         if(unit.getUnit()!="")
-            if(valuetmp!="")
-                valuetmp=valuetmp+","+unit.getUnit();
-            else
-                valuetmp=unit.getUnit();
-
+            valuetmp+=(valuetmp=="")?unit.getUnit():(","+unit.getUnit());
         if(postalCode.getPostalCode()!="")
-            if(valuetmp!="")
-                valuetmp=valuetmp+","+postalCode.getPostalCode();
-            else
-                valuetmp=postalCode.getPostalCode();
+            valuetmp+=(valuetmp=="")?postalCode.getPostalCode():(","+postalCode.getPostalCode());
 
         return valuetmp;
     }
@@ -100,14 +79,11 @@ public class Address {
     }
 
     @Override
-    public int hashCode() {
-        return value.hashCode();
-    }
-
-    public boolean isPrivate() {
-        return isPrivate;
+    public void getPrintableString() {
+        System.out.println("Address : "+toString());
     }
 }
+
 class Block{
 	private String valueBlock;
 

@@ -30,10 +30,10 @@ public class AddressBookEncoder {
         encodedPersonBuilder.append(person.getName());
 
         encodedPersonBuilder.append(person.getPhone().isPrivate() ? " p" : " ");
-        encodedPersonBuilder.append("p/").append(person.getPhone().value);
+        encodedPersonBuilder.append("p/").append(person.getPhone().toString());
 
         encodedPersonBuilder.append(person.getEmail().isPrivate() ? " p" : " ");
-        encodedPersonBuilder.append("e/").append(person.getEmail().value);
+        encodedPersonBuilder.append("e/").append(person.getEmail().toString());
 
         encodedPersonBuilder.append(person.getAddress().isPrivate() ? " p" : " ");
         encodedPersonBuilder.append("a/").append(person.getAddress().toString());
@@ -42,4 +42,5 @@ public class AddressBookEncoder {
 
         return encodedPersonBuilder.toString();
     }
+
 }
