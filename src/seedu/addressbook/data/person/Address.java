@@ -57,3 +57,15 @@ public class Address {
         return isPrivate;
     }
 }
+class Block{
+    private String valueBlock;
+}
+class Street{
+    private String valueStreet;
+}
+class Unit{
+    private String valueUnit;
+}
+class PostalCode{
+    private String valuePostalCode;
+}
