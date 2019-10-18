@@ -58,14 +58,48 @@ public class Address {
     }
 }
 class Block{
-    private String valueBlock;
+	private String valueBlock;
+
+	public String getBlock() {
+    		return valueBlock;
+  	}
+
+  
+  	public void setBlock(String newBlock) {
+    		this.valueBlock = newBlock;
+  	}
 }
 class Street{
     private String valueStreet;
+
+    public String getStreet(){
+    	return valueStreet;
+    }
+
+    public void setStreet(String newStreet){
+    	this.valueStreet = newStreet;
+    }
 }
+
 class Unit{
     private String valueUnit;
+
+    public String getUnit(){
+    	return valueUnit;
+    }
+
+    public void setUnit(String newUnit){
+    	this.valueUnit = newUnit;
+    }
 }
 class PostalCode{
     private String valuePostalCode;
+
+    public String getPostalCode(){
+    	return valuePostalCode;
+    }
+
+    public void setPostalCode(String newPostalCode){
+    	this.valuePostalCode = newPostalCode;
+    }
 }
