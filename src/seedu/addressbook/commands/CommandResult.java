@@ -8,10 +8,10 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
 /**
  * Represents the result of a command execution.
  */
-private class CommandResult {
+public class CommandResult {
 
     /** The feedback message to be shown to the user. Contains a description of the execution result */
-    public final String feedbackToUser;
+    private final String feedbackToUser;
 
     /** The list of persons that was produced by the command */
     private final List<? extends ReadOnlyPerson> relevantPersons;
@@ -31,6 +31,13 @@ private class CommandResult {
      */
     public Optional<List<? extends ReadOnlyPerson>> getRelevantPersons() {
         return Optional.ofNullable(relevantPersons);
+    }
+
+    public void setFeedbackToUser(String feedbackToUser){
+        feedbackToUser=feedbackToUser;
+    }
+    public String getFeedbackToUser(){
+        return feedbackToUser;
     }
 
 }
