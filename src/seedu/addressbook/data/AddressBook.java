@@ -1,5 +1,6 @@
 package seedu.addressbook.data;
 
+import seedu.addressbook.commands.Command;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList;
@@ -74,4 +75,6 @@ public class AddressBook {
                 || (other instanceof AddressBook // instanceof handles nulls
                         && this.allPersons.equals(((AddressBook) other).allPersons));
     }
+
+
 }
