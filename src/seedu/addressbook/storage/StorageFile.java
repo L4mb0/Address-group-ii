@@ -29,6 +29,12 @@ public class StorageFile {
     }
 
     /**
+     * @throws AccidentalyReadOnlyException if the user makes the stora file read only while is running
+     */
+
+
+
+    /**
      * @throws InvalidStorageFilePathException if the given file path is invalid
      */
     public StorageFile(String filePath) throws InvalidStorageFilePathException {
@@ -55,20 +61,23 @@ public class StorageFile {
         try {
             List<String> encodedAddressBook = AddressBookEncoder.encodeAddressBook(addressBook);
             Files.write(path, encodedAddressBook);
-        } catch (IOException ioe) {
+            if(!Files.isReadable(path)){
+                throw new AccidentallyReadOnlyException("File is READ ONLY");
+            }
+        } catch (IOException | AccidentallyReadOnlyException ioe) {
             throw new StorageOperationException("Error writing to file: " + path);
         }
     }
 
     /**
      * Loads the {@code AddressBook} data from this storage file, and then returns it.
-     * Returns an empty {@code AddressBook} if the file does not exist, or is not a regular file.
+     * Returns an empty {@code AddressBook} if the file does not exist, is not a regular file or is not readable.
      *
      * @throws StorageOperationException if there were errors reading and/or converting data from file.
      */
     public AddressBook load() throws StorageOperationException {
 
-        if (!Files.exists(path) || !Files.isRegularFile(path)) {
+        if (!Files.exists(path) || !Files.isRegularFile(path) ) {
             return new AddressBook();
         }
 
@@ -83,6 +92,7 @@ public class StorageFile {
             throw new StorageOperationException("File contains illegal data values; data type constraints not met");
         }
     }
+
 
     public String getPath() {
         return path.toString();
@@ -109,6 +119,14 @@ public class StorageFile {
         public StorageOperationException(String message) {
             super(message);
         }
+    }
+
+    /**
+     * Signals that some error has occurred while a user accidentally makes the storage file read only
+     * while the AddressBook program is running and the storage file.
+     */
+    public static class  AccidentallyReadOnlyException extends Exception{
+        public AccidentallyReadOnlyException(String message){super(message);}
     }
 
 
