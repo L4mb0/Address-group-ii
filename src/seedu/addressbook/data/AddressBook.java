@@ -35,8 +35,14 @@ public class AddressBook {
      *
      * @throws DuplicatePersonException if an equivalent person already exists.
      */
-    public void addPerson(Person toAdd) throws DuplicatePersonException {
+        public void addPerson(Person toAdd) throws DuplicatePersonException {
         allPersons.add(toAdd);
+        ListAllPersons();
+    }
+
+    public void ListAllPersons(){
+            for(Person p :allPersons)
+                System.out.println(p.getName());
     }
 
     /**
@@ -53,6 +59,7 @@ public class AddressBook {
      */
     public void removePerson(ReadOnlyPerson toRemove) throws PersonNotFoundException {
         allPersons.remove(toRemove);
+        ListAllPersons();
     }
 
     /**

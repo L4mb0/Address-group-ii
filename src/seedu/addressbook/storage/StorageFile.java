@@ -121,8 +121,6 @@ public class StorageFile {
         }
     }
 
-<<<<<<< HEAD
-=======
     /**
      * Signals that some error has occurred while a user accidentally makes the storage file read only
      * while the AddressBook program is running and the storage file.
@@ -131,6 +129,4 @@ public class StorageFile {
         public AccidentallyReadOnlyException(String message){super(message);}
     }
 
-
->>>>>>> c9cc5893d4d25c1ec6ae4d1b5ea727751efa9c9a
 }
