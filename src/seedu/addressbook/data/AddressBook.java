@@ -6,6 +6,11 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
+import seedu.addressbook.data.tag.Tagging;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Represents the entire address book. Contains the data of the address book.
@@ -13,6 +18,7 @@ import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 public class AddressBook {
 
     private final UniquePersonList allPersons;
+    private final Set<Tagging> taggings = new HashSet<>();
 
     /**
      * Creates an empty address book.
@@ -67,6 +73,20 @@ public class AddressBook {
      */
     public void clear() {
         allPersons.clear();
+    }
+
+    /**
+     * Add a new Tagging
+     */
+    public void setTagging(Tagging tagging) {
+        taggings.add(tagging);
+    }
+
+    /**
+     * Return Tagging List
+     */
+    public Set<Tagging> getTagging() {
+        return taggings;
     }
 
     /**
